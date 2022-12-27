@@ -1,0 +1,73 @@
+<div class="edicion">
+  <div class="container">
+    <div class="row">
+      <h4>Editar o cargar habilidades</h4>
+      <div>
+        <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+          <div class="form-group">
+            <label for="nombreHab">Nombre de la nueva-habilidad</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nombreHab"
+              name="nombreHab"
+              [(ngModel)]="nombreHab"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="nivelHab">Porcentaje de la nueva habilidad</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nivelHab"
+              name="nivelHab"
+              [(ngModel)]="nivelHab"
+              required
+            />
+          </div>
+          <button class="btn btn-primary">Agregar habilidad</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <table class="table caption-top">
+          <caption>
+            <h2>Habilidades</h2>
+          </caption>
+          <thead class="col-m-3">
+            <tr class="table table-success table-stripe">
+              <th>Skill</th>
+              <th>Nivel de habilidad</th>
+            </tr>
+          </thead>
+          <tbody class="col-m-3">
+            <tr *ngFor="let Habilidades of habil">
+              <td>
+                <h6>{{ Habilidades.nombreHab }}</h6>
+              </td>
+              <td>{{ Habilidades.nivelHab }}</td>
+
+              <td>
+                <button
+                  class="btn btn-light"
+                  routerLink="/editarHabilidad/{{ Habilidades.id }}"
+                >
+                  <i class="bi bi-pencil-fill"></i> Editar
+                </button>
+              </td>
+              <td>
+                <button class="btn btn-danger" (click)="delete(Habilidades.id)">
+                  Borrar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
